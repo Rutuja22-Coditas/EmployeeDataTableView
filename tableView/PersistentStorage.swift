@@ -1,9 +1,4 @@
-//
-//  PersistentStorage.swift
-//  tableView
-//
-//  Created by Coditas on 02/09/21.
-//
+
 
 import Foundation
 import CoreData

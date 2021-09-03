@@ -18,9 +18,12 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
                     data in
                     self.empArr = data
                 }
-        viewModelUser.saveEmployee()
-        //viewModelUser.fetchEmployee()
-    
+        //viewModelUser.openDatabse()
+        DispatchQueue.main.async {
+            self.viewModelUser.saveEmployee()
+            //self.viewModelUser.fetchEmployee()
+            
+        }
         
         tableView.register(UINib(nibName: "arrayTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         DispatchQueue.main.async {
@@ -31,12 +34,13 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         empArr.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? arrayTableViewCell
 
-        let details = viewModelUser.empArr[indexPath.row]
+        let details = empArr[indexPath.row]
 
         cell?.nameLbl.text = "\(details.first_name) \(details.last_name)"
         return cell!

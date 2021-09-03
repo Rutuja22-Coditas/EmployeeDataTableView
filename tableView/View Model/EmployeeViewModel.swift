@@ -9,7 +9,8 @@ class EmployeeViewModel{
     
     
     //static var sharedInstance = EmployeeViewModel()
-    //let context = (UIApplication.shared.delegate as? AppDelegate)? .persistentContainer.viewContext
+    //let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+    //var context:NSManagedObjectContext!
     //let context = PersistentStorage.shared.persistentContainer.viewContext
     
     let urlString = "https://reqres.in/api/users"
@@ -34,24 +35,79 @@ class EmployeeViewModel{
     func saveEmployee(){
 
         for i in 0...5{
-            let a = Emp(context: PersistentStorage.shared.context)
-            a.id = Int16(empArr[i].id)
-            a.first_name = empArr[i].first_name
-            a.last_name = empArr[i].last_name
-            a.email = empArr[i].email
-            //print(a)
+        let Employee = Emp(context: PersistentStorage.shared.context)
+            //let Employee = NSEntityDescription.insertNewObject(forEntityName: "Emp", into: appDelegate!.context) as! Emp
+            Employee.id = Int16(empArr[i].id)
+            Employee.first_name = empArr[i].first_name
+            Employee.last_name = empArr[i].last_name
+            Employee.email = empArr[i].email
+            PersistentStorage.shared.saveContext()
         }
-        PersistentStorage.shared.saveContext()
-        fetchEmployee()
-        
-}
+        //fetchEmployee()
+//        do{
+//            try appDelegate?.context.save()
+//        }
+//        catch{
+//            print("data is not saved")
+//        }
+    }
+
     func fetchEmployee(){
-        
+
         do{
             guard let result = try PersistentStorage.shared.context.fetch(Emp.fetchRequest()) as? [Emp] else {return}
-            }catch  {
-            print(error)
+            for employee in result{
+                print("fetchEmployee",employee)
+                 }
+            }
+        catch  {
+            print("fetchdataerror",error)
         }
 }
+//    func openDatabse()
+//        {
+//        context = appDelegate?.persistentContainer.viewContext
+//            let entity = NSEntityDescription.entity(forEntityName: "Emp", in: context)
+//            let newUser = NSManagedObject(entity: entity!, insertInto: context)
+//            saveData(UserDBObj:newUser)
+//
+//        }
+
+//        func saveData(UserDBObj:NSManagedObject)
+//        {
+//            for i in 0...5{
+//                UserDBObj.setValue(empArr[i].email, forKey: "email")
+//                UserDBObj.setValue(empArr[i].id, forKey: "id")
+//                UserDBObj.setValue(empArr[i].first_name, forKey: "first_name")
+//                UserDBObj.setValue(empArr[i].last_name, forKey: "last_name")
+//
+//            }
+//            print("Storing Data..")
+//            print(UserDBObj)
+//            do {
+//                try context.save()
+//            } catch {
+//                print("Storing data Failed")
+//            }
+//
+//            //fetchData()
+//        }
+//
+//        func fetchData()
+//        {
+//            print("Fetching Data..")
+//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Emp")
+//            request.returnsObjectsAsFaults = false
+//            do {
+//                let result = try context.fetch(request)
+//                for data in result as! [NSManagedObject] {
+//                    let email = data.value(forKey: "email") as! String
+//                    //let age = data.value(forKey: "age") as! String
+//                    print("Email is :", email)
+//                }
+//            } catch {
+//                print("Fetching data Failed")
+//            }
+//        }
    
 }
