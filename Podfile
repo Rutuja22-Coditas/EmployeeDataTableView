@@ -7,5 +7,6 @@ target 'tableView' do
 
   # Pods for tableView
    pod 'Kingfisher'
-
+   pod 'RealmSwift'
+   pod 'ReachabilitySwift'
 end

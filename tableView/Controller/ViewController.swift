@@ -1,29 +1,64 @@
 
 
 import UIKit
-import CoreData
+import RealmSwift
+import Reachability
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     //let context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //Singlton instance
        
     var viewModelUser = EmployeeViewModel()
     var empArr = [Employee]()
-   
+    
+    //var realm = try! Realm()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        reachability.whenReachable = { reachability in
+//            if reachability.connection == .wifi {
+//                print("Reachable via WiFi")
+////                self.viewModelUser.parseJsonUrl{
+////                    data in
+////                    self.empArr = data
+////                }
+//
+//            } else {
+//                print("Reachable via Cellular")
+//            }
+//        }
+//        reachability.whenUnreachable = { _ in
+//            print("Not reachable")
+//        }
+//
+//        do {
+//            try reachability.startNotifier()
+//        } catch {
+//            print("Unable to start notifier")
+//        }
         viewModelUser.parseJsonUrl{
                     data in
                     self.empArr = data
                 }
+        
+        //DispatchQueue.main.async {
+            //self.viewModelUser.saveData()
+            //self.viewModelUser.deleteData()
+          //  self.viewModelUser.retrieveData()
+        //}
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
         //viewModelUser.openDatabse()
-        DispatchQueue.main.async {
-            self.viewModelUser.saveEmployee()
+        //DispatchQueue.main.async {
+            //self.viewModelUser.saveEmployee()
             //self.viewModelUser.fetchEmployee()
             
-        }
+        //}
         
         tableView.register(UINib(nibName: "arrayTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         DispatchQueue.main.async {
@@ -31,8 +66,8 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         }
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         empArr.count
         
     }
@@ -48,8 +83,8 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
            tableView.deselectRow(at: indexPath, animated: true)
-           let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-           let newViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+//           let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+           let newViewController = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
 
            newViewController.empDetail = empArr
            newViewController.ID = indexPath.row

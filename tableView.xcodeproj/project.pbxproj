@@ -23,7 +23,10 @@
 		7E594A1B26DD01CD006A3AE6 /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E594A1A26DD01CD006A3AE6 /* EmployeeData.swift */; };
 		7E594A1F26DD023A006A3AE6 /* EmployeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E594A1E26DD023A006A3AE6 /* EmployeeViewModel.swift */; };
 		7E594A2226DD062F006A3AE6 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E594A2126DD062F006A3AE6 /* DetailsViewController.swift */; };
+		7E64B31126E57647007E6355 /* EmployeeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E64B31026E57647007E6355 /* EmployeeRealm.swift */; };
+		7E6912B226E7171B00DC837B /* RealmDbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6912B126E7171B00DC837B /* RealmDbViewController.swift */; };
 		7E73EA8E26E0A57C00787193 /* PersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E73EA8D26E0A57C00787193 /* PersistentStorage.swift */; };
+		7E9523A126E6491200F0334D /* ReachabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9523A026E6491200F0334D /* ReachabilityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +48,10 @@
 		7E594A1A26DD01CD006A3AE6 /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
 		7E594A1E26DD023A006A3AE6 /* EmployeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewModel.swift; sourceTree = "<group>"; };
 		7E594A2126DD062F006A3AE6 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		7E64B31026E57647007E6355 /* EmployeeRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeRealm.swift; sourceTree = "<group>"; };
+		7E6912B126E7171B00DC837B /* RealmDbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDbViewController.swift; sourceTree = "<group>"; };
 		7E73EA8D26E0A57C00787193 /* PersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStorage.swift; sourceTree = "<group>"; };
+		7E9523A026E6491200F0334D /* ReachabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityViewController.swift; sourceTree = "<group>"; };
 		95577F3FAD4B97F7E5F9F152 /* Pods-tableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tableView.release.xcconfig"; path = "Target Support Files/Pods-tableView/Pods-tableView.release.xcconfig"; sourceTree = "<group>"; };
 		D4847FAC71A6B8EDE1077DAB /* Pods_tableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -121,6 +127,7 @@
 			children = (
 				7E594A1626DD0193006A3AE6 /* Employee.swift */,
 				7E594A1A26DD01CD006A3AE6 /* EmployeeData.swift */,
+				7E64B31026E57647007E6355 /* EmployeeRealm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 				7E560C6D26DBDDDB0056B2E1 /* ViewController.swift */,
 				7E594A2126DD062F006A3AE6 /* DetailsViewController.swift */,
 				7E560C8126DBDF160056B2E1 /* arrayTableViewCell.swift */,
+				7E9523A026E6491200F0334D /* ReachabilityViewController.swift */,
+				7E6912B126E7171B00DC837B /* RealmDbViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -274,6 +283,9 @@
 				7E560C8326DBDF160056B2E1 /* arrayTableViewCell.swift in Sources */,
 				7E594A2226DD062F006A3AE6 /* DetailsViewController.swift in Sources */,
 				7E594A1B26DD01CD006A3AE6 /* EmployeeData.swift in Sources */,
+				7E9523A126E6491200F0334D /* ReachabilityViewController.swift in Sources */,
+				7E6912B226E7171B00DC837B /* RealmDbViewController.swift in Sources */,
+				7E64B31126E57647007E6355 /* EmployeeRealm.swift in Sources */,
 				7E594A1726DD0193006A3AE6 /* Employee.swift in Sources */,
 				7E560C7426DBDDDB0056B2E1 /* tableView.xcdatamodeld in Sources */,
 				7E4A568026DDC9C900F5A08B /* Emp+CoreDataClass.swift in Sources */,

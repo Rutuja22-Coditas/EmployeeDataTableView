@@ -1,13 +1,14 @@
 
 
 import UIKit
-import CoreData
-import UIKit
+//import CoreData
+import RealmSwift
 
 class EmployeeViewModel{
     var empArr = [Employee]()
     
     
+
     //static var sharedInstance = EmployeeViewModel()
     //let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
     //var context:NSManagedObjectContext!
@@ -32,17 +33,70 @@ class EmployeeViewModel{
         }
     }
     
-    func saveEmployee(){
-
-        for i in 0...5{
-        let Employee = Emp(context: PersistentStorage.shared.context)
-            //let Employee = NSEntityDescription.insertNewObject(forEntityName: "Emp", into: appDelegate!.context) as! Emp
-            Employee.id = Int16(empArr[i].id)
-            Employee.first_name = empArr[i].first_name
-            Employee.last_name = empArr[i].last_name
-            Employee.email = empArr[i].email
-            PersistentStorage.shared.saveContext()
-        }
+    
+    
+    
+    //Realm
+    
+    let realm = try! Realm()
+    
+    
+//    func saveData(){
+//
+//        try! realm.write({
+//
+//            for i in 0...5{
+//
+//                let empRealm = EmployeeRealm()
+//                //empRealm.id = empArr[i].id
+//                empRealm.email = empArr[i].email
+//                empRealm.first_name = empArr[i].first_name
+//                empRealm.last_name = empArr[i].last_name
+//                empRealm.avatar = empArr[i].avatar
+//                realm.add(empRealm)
+//                //realm.delete(empRealm)
+//                //print(empRealm)
+//            }
+//                    //
+//        })
+//
+//    }
+    
+    func retrieveData(){
+        let results = realm.objects(EmployeeRealm.self)
+        print(results[0].email!)
+    }
+    
+//    func deleteData(){
+//
+//        try! realm.write{
+//            realm.delete(empRealm.self)
+//        }
+//
+//
+//    }
+    
+//    func deleteData(with indexSet: IndexSet){
+//        let empRealm = EmployeeRealm()
+//        indexSet.forEach {
+//            index in
+//            try! realm.write{
+//                realm.delete(empRealm)
+//            }
+//        }
+//    }
+    
+//    func saveEmployee(){
+//
+//        for i in 0...5{
+//        let Employee = Emp(context: PersistentStorage.shared.context)
+//            //let Employee = NSEntityDescription.insertNewObject(forEntityName: "Emp", into: appDelegate!.context) as! Emp
+//            Employee.id = Int16(empArr[i].id)
+//            Employee.first_name = empArr[i].first_name
+//            Employee.last_name = empArr[i].last_name
+//            Employee.email = empArr[i].email
+//            PersistentStorage.shared.saveContext()
+//        }
         //fetchEmployee()
 //        do{
 //            try appDelegate?.context.save()
@@ -50,20 +104,20 @@ class EmployeeViewModel{
 //        catch{
 //            print("data is not saved")
 //        }
-    }
+//    }
 
-    func fetchEmployee(){
-
-        do{
-            guard let result = try PersistentStorage.shared.context.fetch(Emp.fetchRequest()) as? [Emp] else {return}
-            for employee in result{
-                print("fetchEmployee",employee)
-                 }
-            }
-        catch  {
-            print("fetchdataerror",error)
-        }
-}
+//    func fetchEmployee(){
+//
+//        do{
+//            guard let result = try PersistentStorage.shared.context.fetch(Emp.fetchRequest()) as? [Emp] else {return}
+//            for employee in result{
+//                print("fetchEmployee",employee)
+//                 }
+//            }
+//        catch  {
+//            print("fetchdataerror",error)
+//        }
+//}
 //    func openDatabse()
 //        {
 //        context = appDelegate?.persistentContainer.viewContext
